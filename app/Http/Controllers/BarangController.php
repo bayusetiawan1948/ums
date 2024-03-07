@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class BarangController extends Controller
 {
-    public function getBarang($id):JsonResponse {
+    public function getBarang($id = null):JsonResponse {
         try {
             if($id){
-                $data = Barang::where('kode', $id)->get();
+                $data = Barang::where('kode', $id)->first();
                 return $this->sendResponse($data);
             }
 
@@ -38,9 +38,15 @@ class BarangController extends Controller
                 return $this->sendError($validated->errors(), 400);
             }
 
-            $getLastId = Barang::count();
-            $stringConcat = 'BRG_';
-            $kodeId = $stringConcat . ($getLastId + 1);
+            $kodeId = '';
+            $getLastId = Barang::select('kode')->orderBy('kode', 'desc')->first();
+            if(empty($getLastId)){
+                $kodeId = 'BRG_1';
+            }else{
+                $separateData = explode("_", $getLastId);
+                $stringConcat = 'BRG_';
+                $kodeId = $stringConcat . ((int) $separateData[1] + 1);
+            }
 
             $data = [
                 'kode' => $kodeId,
@@ -57,7 +63,7 @@ class BarangController extends Controller
         }
     }
 
-    public function updateBarang(Request $request, $id):JsonResponse {
+    public function updateBarang(Request $request, $id = null):JsonResponse {
         try {
             if(!$id){
                 return $this->sendError('Masukan kode barang', 400);
@@ -82,7 +88,7 @@ class BarangController extends Controller
         }
     }
 
-    public function deleteBarang($id):JsonResponse {
+    public function deleteBarang($id = null):JsonResponse {
         try {
             if(!$id){
                 return $this->sendError('Masukan kode barang', 400);

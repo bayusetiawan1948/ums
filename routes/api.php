@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\BarangController;
-use App\Models\Pelanggan;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PenjualanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,14 +22,20 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::controller(BarangController::class)->group(function () {
-    Route::get('barang/id?', 'getAllBarang');
+    Route::get('barang/{id?}', 'getBarang');
     Route::post('barang', 'createBarang');
     Route::patch('barang/{id}', 'updateBarang');
     Route::delete('barang/{id}', 'deleteBarang');
 });
-Route::controller(Pelanggan::class)->group(function () {
-    Route::get('pelanggan/id?', 'getAllPelanggan');
+Route::controller(PelangganController::class)->group(function () {
+    Route::get('pelanggan/{id?}', 'getPelanggan');
     Route::post('pelanggan', 'createPelanggan');
     Route::patch('pelanggan/{id}', 'updatePelanggan');
     Route::delete('pelanggan/{id}', 'deletePelanggan');
+});
+Route::controller(PenjualanController::class)->group(function () {
+    Route::get('penjualan/{id?}', 'getPenjualan');
+    Route::post('penjualan', 'createPenjualan');
+    Route::patch('penjualan/{id}', 'updatePenjualan');
+    Route::delete('penjualan/{id}', 'deletePenjualan');
 });

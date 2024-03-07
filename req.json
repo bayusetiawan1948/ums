@@ -1,0 +1,19 @@
+{
+    "id_nota": "-- Not a supported string literal (unprocessed value). --",
+    "id_pelanggan": "-- Not a supported string literal (unprocessed value). --",
+    "nama_pelanggan": "-- Not a supported string literal (unprocessed value). --",
+    "tanggal": "-- Not a supported string literal (unprocessed value). --",
+    "subtotal": "-- Not a supported string literal (unprocessed value). --",
+    "detail": [
+        {
+            "id_barang": "-- Not a supported string literal (unprocessed value). --",
+            "nama_barang": "-- Not a supported string literal (unprocessed value). --",
+            "qty": "-- Not a supported string literal (unprocessed value). --"
+        },
+        {
+            "id_barang": "-- Not a supported string literal (unprocessed value). --",
+            "nama_barang": "-- Not a supported string literal (unprocessed value). --",
+            "qty": "-- Not a supported string literal (unprocessed value). --"
+        }
+    ]
+}
