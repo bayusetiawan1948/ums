@@ -26,6 +26,7 @@ class PenjualanController extends Controller
                         ->join('pelanggan', 'pelanggan.id_pelanggan', '=', 'penjualan.kode_pelanggan')
                         ->orderBy('tgl', 'desc')
                         ->get();
+                // setelah query dijalankan dan mendapatkan data yang di inginkan setelah itu meformat data untuk menjadi output yang di inginkan
                 foreach ($data as $value) {
                     $currentIdNota = $value->id_nota;
                     if(count($result) > 0){
@@ -93,7 +94,7 @@ class PenjualanController extends Controller
                         ->join('pelanggan', 'pelanggan.id_pelanggan', '=', 'penjualan.kode_pelanggan')
                         ->orderBy('tgl', 'desc')
                         ->get();
-                        $tmp = [];
+                        // setelah query dijalankan dan mendapatkan data yang di inginkan setelah itu meformat data untuk menjadi output yang di inginkan
                 foreach ($data as $value) {
                     $currentIdNota = $value->id_nota;
                     if(count($result) > 0){
@@ -150,7 +151,6 @@ class PenjualanController extends Controller
                         array_push($result, $header);
                     }
                 }
-                // dd($tmp);
             }
             return $this->sendResponse($result);
         } catch (\Throwable $th) {
