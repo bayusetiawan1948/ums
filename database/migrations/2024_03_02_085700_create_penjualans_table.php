@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('penjualan', function (Blueprint $table) {
             $table->string('id_nota');
-            $table->string('tgl');
+            $table->date('tgl');
             $table->string('kode_pelanggan');
             $table->integer('subtotal');
 
